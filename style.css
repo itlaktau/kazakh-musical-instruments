@@ -1,0 +1,331 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+
+    background:linear-gradient(
+        to bottom,
+        #fff8dc,
+        #f5deb3,
+        #87ceeb
+    );
+
+    min-height:100vh;
+    position:relative;
+}
+
+/* Орнамент слева */
+
+body::before{
+    content:"";
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    width:100px;
+    height:100%;
+
+    background:url("images/ornament-left.png");
+
+    background-repeat:repeat-y;
+    background-size:contain;
+    background-position:center;
+
+    opacity:0.5;
+
+    z-index:-1;
+}
+
+/* Орнамент справа */
+
+body::after{
+    content:"";
+    position:fixed;
+
+    right:0;
+    top:0;
+
+    width:100px;
+    height:100%;
+
+    background:url("images/ornament-right.png");
+
+    background-repeat:repeat-y;
+    background-size:contain;
+    background-position:center;
+
+    opacity:0.5;
+
+    z-index:-1;
+}
+
+/* Шапка */
+
+header{
+    background:linear-gradient(
+        90deg,
+        #008fd5,
+        #00b7ff,
+        #008fd5
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+    border-bottom:5px solid #ffd700;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+header h1{
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:18px;
+}
+
+/* Подбор музыки */
+
+.mood-section{
+
+    max-width:900px;
+
+    margin:30px auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    border:3px solid #ffd700;
+
+    text-align:center;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.mood-section h2{
+    color:#0066cc;
+    margin-bottom:15px;
+}
+
+.mood-buttons{
+    margin-top:20px;
+}
+
+.mood-buttons button{
+
+    background:#008fd5;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    margin:8px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:0.3s;
+}
+
+.mood-buttons button:hover{
+    background:#005fa3;
+}
+
+#result{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#fff8dc;
+
+    border-radius:10px;
+
+    min-height:80px;
+}
+
+/* Карточки */
+
+.container{
+
+    max-width:1300px;
+
+    margin:30px auto;
+
+    padding:20px 120px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:25px;
+}
+
+.card{
+
+    background:#fffdf5;
+
+    border:3px solid #ffd700;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    text-align:center;
+
+    box-shadow:0 5px 12px rgba(0,0,0,0.15);
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h2{
+    color:#0066cc;
+    margin-bottom:10px;
+}
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    border:2px solid #87ceeb;
+
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:15px;
+    min-height:50px;
+}
+
+audio{
+    width:100%;
+}
+
+/* Подвал */
+
+footer{
+
+    background:#005fa3;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:20px;
+
+    border-top:5px solid #ffd700;
+}
+
+/* Телефон */
+
+@media(max-width:768px){
+
+    body::before,
+    body::after{
+        display:none;
+    }
+
+    .container{
+        padding:20px;
+    }
+
+    header h1{
+        font-size:24px;
+    }
+
+/* Выпадающий список настроения */
+
+#moodSelect {
+
+    width: 320px;
+
+    max-width: 90%;
+
+    padding: 12px;
+
+    border: 2px solid #008fd5;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    background: white;
+
+    margin-top: 15px;
+}
+
+/* Кнопка подобрать кюй */
+
+.recommend-btn {
+
+    background: #008fd5;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 24px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.recommend-btn:hover {
+
+    background: #005fa3;
+}
+
+/* Блок результата */
+
+#result {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background: #fff8dc;
+
+    border-radius: 10px;
+
+    min-height: 80px;
+
+    border: 1px solid #ffd700;
+}
+
+
+}

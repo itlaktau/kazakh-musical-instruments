@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Қазақтың ұлттық музыкалық аспаптары</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1> Қазақтың ұлттық музыкалық аспаптары </h1>
+
+        <p>
+            Домбыра • Қобыз • Жетіген • Сыбызғы • Шаңқобыз •
+            Асатаяқ • Дауылпаз • Керней • Сазсырнай
+        </p>
+    </header>
+
+    <div class="container">
+
+        <!-- Домбыра -->
+        <div class="card">
+            <h2>Домбыра</h2>
+            <img src="images/dombra.jpg" alt="Домбыра">
+            <p>Қазақ халқының ең танымал екі ішекті аспабы.</p>
+
+            <audio controls>
+                <source src="sounds/dombra.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Қобыз -->
+        <div class="card">
+            <h2>Қобыз</h2>
+            <img src="images/kobyz.jpg" alt="Қобыз">
+            <p>Көне қыл ішекті музыкалық аспап.</p>
+
+            <audio controls>
+                <source src="sounds/kobyz.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Жетіген -->
+        <div class="card">
+            <h2>Жетіген</h2>
+            <img src="images/zhetygen.jpg" alt="Жетіген">
+            <p>Көп ішекті шертпелі аспап.</p>
+
+            <audio controls>
+                <source src="sounds/zhetygen.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Сыбызғы -->
+        <div class="card">
+            <h2>Сыбызғы</h2>
+            <img src="images/sybyzgy.jpg" alt="Сыбызғы">
+            <p>Үрмелі халық аспабы.</p>
+
+            <audio controls>
+                <source src="sounds/sybyzgy.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Шаңқобыз -->
+        <div class="card">
+            <h2>Шаңқобыз</h2>
+            <img src="images/shankobyz.jpg" alt="Шаңқобыз">
+            <p>Тілшелі көне музыкалық аспап.</p>
+
+            <audio controls>
+                <source src="sounds/shankobyz.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Асатаяқ -->
+        <div class="card">
+            <h2>Асатаяқ</h2>
+            <img src="images/asatayak.jpg" alt="Асатаяқ">
+            <p>Ұрмалы ұлттық аспап.</p>
+
+            <audio controls>
+                <source src="sounds/asatayak.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Дауылпаз -->
+        <div class="card">
+            <h2>Дауылпаз</h2>
+            <img src="images/dauylpaz.jpg" alt="Дауылпаз">
+            <p>Қазақтың көне барабаны.</p>
+
+            <audio controls>
+                <source src="sounds/dauylpaz.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Керней -->
+        <div class="card">
+            <h2>Керней</h2>
+            <img src="images/kernei.jpg" alt="Керней">
+            <p>Дауысы қатты үрмелі аспап.</p>
+
+            <audio controls>
+                <source src="sounds/kernei.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Сазсырнай -->
+        <div class="card">
+            <h2>Сазсырнай</h2>
+            <img src="images/sazsyrnai.jpg" alt="Сазсырнай">
+            <p>Саздан жасалған көне үрмелі аспап.</p>
+
+            <audio controls>
+                <source src="sounds/sazsyrnai.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+    </div>
+
+<section class="mood-section">
+
+    <h2>🎶 Подбор музыки по настроению</h2>
+
+    <p>Выберите своё настроение и получите рекомендацию казахского кюя</p>
+
+    <select id="moodSelect">
+        <option value="">-- Выберите настроение --</option>
+        <option value="весёлое">😊 Весёлое</option>
+        <option value="спокойное">😌 Спокойное</option>
+        <option value="грустное">😔 Грустное</option>
+        <option value="энергичное">⚡ Энергичное</option>
+        <option value="вдохновение">✨ Вдохновение</option>
+    </select>
+
+    <br><br>
+
+    <button class="recommend-btn" onclick="chooseMusic()">
+        Подобрать кюй
+    </button>
+
+    <div id="result">
+        Рекомендация
+    </div>
+
+    <audio id="player" controls style="display:none; margin-top:15px;">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+
+</section>
+    <footer>
+        © 2026 Виртуальный музей казахских музыкальных инструментов
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
