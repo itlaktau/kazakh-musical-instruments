@@ -2,160 +2,1184 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Қазақтың ұлттық музыкалық аспаптары</title>
 
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Қазақтың ұлттық музыкалық аспаптары
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff3cf;
+            color: #222;
+        }
+
+        /* =====================================================
+           LANGUAGE
+        ===================================================== */
+
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            padding: 12px 16px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.15);
+
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .language-selector span {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .language-selector select {
+            padding: 7px 10px;
+
+            border-radius: 6px;
+
+            border: 1px solid #bbb;
+
+            background: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0099d8,
+                    #0086c4
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 28px 20px 30px 340px;
+
+            border-bottom: 5px solid #ffd000;
+        }
+
+        header h1 {
+            margin: 0;
+
+            font-size: 38px;
+
+            font-weight: 700;
+        }
+
+        header p {
+            margin-top: 12px;
+
+            font-size: 20px;
+
+            font-weight: 500;
+        }
+
+        /* =====================================================
+           INSTRUMENT CARDS
+        ===================================================== */
+
+        .container {
+            width: 90%;
+
+            max-width: 1200px;
+
+            margin: 30px auto 50px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 28px;
+        }
+
+        .card {
+            background: #fffdf7;
+
+            border: 3px solid #ffd000;
+
+            border-radius: 18px;
+
+            padding: 18px;
+
+            box-shadow:
+                0 6px 18px
+                rgba(0, 0, 0, 0.12);
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.16);
+        }
+
+        .card h2 {
+            margin: 0 0 15px;
+
+            color: #0878cf;
+
+            font-size: 28px;
+        }
+
+        .card img {
+            width: 100%;
+
+            height: 235px;
+
+            object-fit: contain;
+
+            border: 2px solid #72c9ef;
+
+            border-radius: 12px;
+
+            background: white;
+        }
+
+        .card-description {
+            margin: 17px 8px;
+
+            font-size: 17px;
+
+            line-height: 1.65;
+
+            text-align: justify;
+        }
+
+        .card audio {
+            width: 100%;
+
+            margin-top: 10px;
+        }
+
+        /* =====================================================
+           KUI MOOD
+        ===================================================== */
+
+        .mood-section {
+            width: 90%;
+
+            max-width: 900px;
+
+            margin: 50px auto;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 7px 22px
+                rgba(0, 0, 0, 0.12);
+        }
+
+        .mood-section h2 {
+            color: #0878cf;
+
+            font-size: 30px;
+
+            margin-top: 0;
+        }
+
+        .mood-section > p {
+            font-size: 17px;
+
+            line-height: 1.6;
+        }
+
+        .mood-section select {
+            padding: 12px;
+
+            border-radius: 8px;
+
+            border: 1px solid #aaa;
+
+            font-size: 16px;
+
+            min-width: 280px;
+
+            cursor: pointer;
+        }
+
+        .recommend-btn {
+            padding: 13px 25px;
+
+            background: #087ed3;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 25px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .recommend-btn:hover {
+            background: #006bb9;
+
+            transform: scale(1.03);
+        }
+
+        #result {
+            margin-top: 25px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+        .recommendation-box {
+            background: #fff8dd;
+
+            border-radius: 15px;
+
+            padding: 22px;
+
+            margin-top: 20px;
+
+            border: 2px solid #ffd000;
+        }
+
+        .recommendation-box h3 {
+            color: #0878cf;
+
+            margin-top: 0;
+
+            font-size: 23px;
+        }
+
+        .recommendation-box h2 {
+            color: #222;
+
+            margin: 12px 0;
+
+            font-size: 32px;
+        }
+
+        .recommendation-description {
+            font-weight: normal;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+        }
+
+        #player {
+            width: 100%;
+
+            margin-top: 18px;
+        }
+
+        .card-description {
+            margin-bottom: 10px;
+        }
+
+        .full-description {
+            margin: 8px 8px 14px;
+            text-align: left;
+        }
+
+        .full-description summary {
+            cursor: pointer;
+            color: #0878cf;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 6px 0;
+        }
+
+        .full-description p {
+            margin: 10px 0 0;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* =====================================================
+           VOICE ASSISTANT
+           AT THE VERY BOTTOM
+        ===================================================== */
+
+        .voice-section {
+            width: 90%;
+
+            max-width: 920px;
+
+            margin: 70px auto 50px;
+
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.12);
+
+            text-align: center;
+        }
+
+        .voice-section h2 {
+            color: #0878cf;
+
+            font-size: 30px;
+
+            margin-top: 0;
+        }
+
+        .voice-section > p {
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+        .voice-button {
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087ed3,
+                    #006ac1
+                );
+
+            color: white;
+
+            padding: 17px 35px;
+
+            border-radius: 35px;
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            margin-top: 10px;
+        }
+
+        .voice-button:hover {
+            transform: scale(1.03);
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 100, 200, 0.3);
+        }
+
+        .voice-button.listening {
+            background: #d62828;
+
+            animation:
+                pulse 1s infinite;
+        }
+
+        .voice-button.speaking {
+            background: #0a9f55;
+        }
+
+        @keyframes pulse {
+
+            0% {
+                box-shadow:
+                    0 0 0 0
+                    rgba(214, 40, 40, 0.5);
+            }
+
+            70% {
+                box-shadow:
+                    0 0 0 18px
+                    rgba(214, 40, 40, 0);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 0 0
+                    rgba(214, 40, 40, 0);
+            }
+        }
+
+        #voiceStatus {
+            margin-top: 18px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #333;
+
+            min-height: 24px;
+        }
+
+        #voiceCommand {
+            margin-top: 8px;
+
+            color: #666;
+
+            font-size: 16px;
+
+            min-height: 24px;
+        }
+
+        #voiceLiveText {
+            width: 90%;
+
+            max-width: 700px;
+
+            min-height: 48px;
+
+            margin: 15px auto 0;
+
+            padding: 12px 16px;
+
+            background: #f7f9fc;
+
+            border: 1px solid #d7dde5;
+
+            border-radius: 12px;
+
+            color: #555;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+        }
+
+        .voice-help {
+            margin-top: 22px;
+
+            padding: 20px;
+
+            background: #f3f7fb;
+
+            border-radius: 15px;
+
+            text-align: left;
+        }
+
+        .voice-help h3 {
+            margin-top: 0;
+
+            color: #087ed3;
+        }
+
+        .voice-help p {
+            margin: 8px 0;
+
+            font-size: 16px;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: #008ed0;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+
+            margin-top: 30px;
+
+            font-size: 16px;
+
+            border-top: 5px solid #ffd000;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .container {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .language-selector {
+                position: relative;
+
+                top: auto;
+                left: auto;
+
+                width: fit-content;
+
+                margin: 15px;
+            }
+
+            header {
+                padding-top: 10px;
+            }
+
+            header h1 {
+                font-size: 25px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .mood-section {
+                width:
+                    calc(100% - 30px);
+
+                padding: 20px;
+            }
+
+            .mood-section select {
+                width: 100%;
+
+                min-width: 0;
+            }
+
+            .voice-section {
+                width:
+                    calc(100% - 30px);
+
+                padding: 20px;
+            }
+
+            #voiceLiveText {
+                width: 100%;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1> Қазақтың ұлттық музыкалық аспаптары </h1>
 
-        <p>
-            Домбыра • Қобыз • Жетіген • Сыбызғы • Шаңқобыз •
-            Асатаяқ • Дауылпаз • Керней • Сазсырнай
+    <!-- =====================================================
+         LANGUAGE
+    ====================================================== -->
+
+    <div class="language-selector">
+
+        <span data-i18n="select_lang">
+            Выбор языка:
+        </span>
+
+        <select id="langSelect">
+
+            <option value="ru">
+                Русский
+            </option>
+
+            <option value="kk">
+                Қазақша
+            </option>
+
+            <option value="en">
+                English
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <h1 data-i18n="title">
+            Казахские национальные музыкальные инструменты
+        </h1>
+
+        <p data-i18n="subtitle">
+            Домбра • Кобыз • Жетыген • Сыбызгы •
+            Шанкобыз • Асатаяк • Дауылпаз •
+            Керней • Сазсырнай
         </p>
+
     </header>
+
+
+    <!-- =====================================================
+         INSTRUMENTS
+    ====================================================== -->
 
     <div class="container">
 
-        <!-- Домбыра -->
-        <div class="card">
-            <h2>Домбыра</h2>
-            <img src="images/dombra.jpg" alt="Домбыра">
-            <p>Қазақ халқының ең танымал екі ішекті аспабы.</p>
 
-            <audio controls>
-                <source src="sounds/dombra.mp3" type="audio/mpeg">
+        <!-- DOMBRA -->
+
+        <div class="card">
+
+            <h2 data-i18n="dombra_title">
+                Домбра
+            </h2>
+
+            <img
+                src="images/dombra.jpg"
+                alt="Домбра">
+
+            <p id="desc-dombra" class="card-description" data-i18n="dombra_desc">Домбыра — қазақ халқының екі ішекті шертпелі ұлттық аспабы. Үні анық, әуезді және күй орындауға өте қолайлы.</p>
+            
+
+            <audio
+                id="audio-dombra"
+                controls>
+
+                <source
+                    src="sounds/dombra.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Қобыз -->
-        <div class="card">
-            <h2>Қобыз</h2>
-            <img src="images/kobyz.jpg" alt="Қобыз">
-            <p>Көне қыл ішекті музыкалық аспап.</p>
 
-            <audio controls>
-                <source src="sounds/kobyz.mp3" type="audio/mpeg">
+        <!-- KOBYZ -->
+
+        <div class="card">
+
+            <h2 data-i18n="kobyz_title">
+                Кобыз
+            </h2>
+
+            <img
+                src="images/kobyz.jpg"
+                alt="Кобыз">
+
+            <p id="desc-kobyz" class="card-description" data-i18n="kobyz_desc">Қобыз — үні терең әрі ерекше көне қазақтың ысқышты ішекті аспабы.</p>            
+
+            <audio
+                id="audio-kobyz"
+                controls>
+
+                <source
+                    src="sounds/kobyz.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Жетіген -->
-        <div class="card">
-            <h2>Жетіген</h2>
-            <img src="images/zhetygen.jpg" alt="Жетіген">
-            <p>Көп ішекті шертпелі аспап.</p>
 
-            <audio controls>
-                <source src="sounds/zhetygen.mp3" type="audio/mpeg">
+        <!-- ZHETYGEN -->
+
+        <div class="card">
+
+            <h2 data-i18n="zhetygen_title">
+                Жетыген
+            </h2>
+
+            <img
+                src="images/zhetygen.jpg"
+                alt="Жетыген">
+
+            <p id="desc-zhetygen" class="card-description" data-i18n="zhetygen_desc">Жетіген — жұмсақ, тынық әрі әуезді үні бар көне көп ішекті шертпелі аспап.</p>
+
+            <audio
+                id="audio-zhetygen"
+                controls>
+
+                <source
+                    src="sounds/zhetygen.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Сыбызғы -->
-        <div class="card">
-            <h2>Сыбызғы</h2>
-            <img src="images/sybyzgy.jpg" alt="Сыбызғы">
-            <p>Үрмелі халық аспабы.</p>
 
-            <audio controls>
-                <source src="sounds/sybyzgy.mp3" type="audio/mpeg">
+        <!-- SYBYZGY -->
+
+        <div class="card">
+
+            <h2 data-i18n="sybyzgy_title">
+                Сыбызгы
+            </h2>
+
+            <img
+                src="images/sybyzgy.jpg"
+                alt="Сыбызгы">
+
+            <p id="desc-sybyzgy" class="card-description" data-i18n="sybyzgy_desc">Сыбызғы — жұмсақ, таза әрі тынық үні бар көне қазақтың үрмелі аспабы.</p>            
+
+            <audio
+                id="audio-sybyzgy"
+                controls>
+
+                <source
+                    src="sounds/sybyzgy.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Шаңқобыз -->
-        <div class="card">
-            <h2>Шаңқобыз</h2>
-            <img src="images/shankobyz.jpg" alt="Шаңқобыз">
-            <p>Тілшелі көне музыкалық аспап.</p>
 
-            <audio controls>
-                <source src="sounds/shankobyz.mp3" type="audio/mpeg">
+        <!-- SHANKOBYZ -->
+
+        <div class="card">
+
+            <h2 data-i18n="shankobyz_title">
+                Шанкобыз
+            </h2>
+
+            <img
+                src="images/shankobyz.jpg"
+                alt="Шанкобыз">
+
+            <p id="desc-shankobyz" class="card-description" data-i18n="shankobyz_desc">Шаңқобыз — дірілдеген ерекше тембрі бар шағын көне тілшелі аспап.</p>
+
+            <audio
+                id="audio-shankobyz"
+                controls>
+
+                <source
+                    src="sounds/shankobyz.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Асатаяқ -->
-        <div class="card">
-            <h2>Асатаяқ</h2>
-            <img src="images/asatayak.jpg" alt="Асатаяқ">
-            <p>Ұрмалы ұлттық аспап.</p>
 
-            <audio controls>
-                <source src="sounds/asatayak.mp3" type="audio/mpeg">
+        <!-- ASATAYAK -->
+
+        <div class="card">
+
+            <h2 data-i18n="asatayak_title">
+                Асатаяк
+            </h2>
+
+            <img
+                src="images/asatayak.jpg"
+                alt="Асатаяк">
+
+            <p id="desc-asatayak" class="card-description" data-i18n="asatayak_desc">Асатаяқ — қозғалтқанда сыңғырлаған ырғақты дыбыс шығаратын көне ұрмалы-сілкімелі аспап.</p>            
+
+            <audio
+                id="audio-asatayak"
+                controls>
+
+                <source
+                    src="sounds/asatayak.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Дауылпаз -->
-        <div class="card">
-            <h2>Дауылпаз</h2>
-            <img src="images/dauylpaz.jpg" alt="Дауылпаз">
-            <p>Қазақтың көне барабаны.</p>
 
-            <audio controls>
-                <source src="sounds/dauylpaz.mp3" type="audio/mpeg">
+        <!-- DAUYLPAZ -->
+
+        <div class="card">
+
+            <h2 data-i18n="dauylpaz_title">
+                Дауылпаз
+            </h2>
+
+            <img
+                src="images/dauylpaz.jpg"
+                alt="Дауылпаз">
+
+            <p id="desc-dauylpaz" class="card-description" data-i18n="dauylpaz_desc">Дауылпаз — барабанға ұқсайтын, үні қатты әрі қуатты көне ұрмалы аспап.</p>            
+
+            <audio
+                id="audio-dauylpaz"
+                controls>
+
+                <source
+                    src="sounds/dauylpaz.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Керней -->
-        <div class="card">
-            <h2>Керней</h2>
-            <img src="images/kernei.jpg" alt="Керней">
-            <p>Дауысы қатты үрмелі аспап.</p>
 
-            <audio controls>
-                <source src="sounds/kernei.mp3" type="audio/mpeg">
+        <!-- KERNEI -->
+
+        <div class="card">
+
+            <h2 data-i18n="kernei_title">
+                Керней
+            </h2>
+
+            <img
+                src="images/kernei.jpg"
+                alt="Керней">
+
+            <p id="desc-kernei" class="card-description" data-i18n="kernei_desc">Керней — ұзын түтік пішінді, үні қатты әрі қуатты көне үрмелі аспап.</p>
+            
+            <audio
+                id="audio-kernei"
+                controls>
+
+                <source
+                    src="sounds/kernei.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
-        <!-- Сазсырнай -->
-        <div class="card">
-            <h2>Сазсырнай</h2>
-            <img src="images/sazsyrnai.jpg" alt="Сазсырнай">
-            <p>Саздан жасалған көне үрмелі аспап.</p>
 
-            <audio controls>
-                <source src="sounds/sazsyrnai.mp3" type="audio/mpeg">
+        <!-- SAZSYRNAI -->
+
+        <div class="card">
+
+            <h2 data-i18n="sazsyrnai_title">
+                Сазсырнай
+            </h2>
+
+            <img
+                src="images/sazsyrnai.jpg"
+                alt="Сазсырнай">
+
+            <p id="desc-sazsyrnai" class="card-description" data-i18n="sazsyrnai_desc">Сазсырнай — саздан жасалатын, үні жұмсақ әрі әуезді шағын көне үрмелі аспап.</p>
+
+            <audio
+                id="audio-sazsyrnai"
+                controls>
+
+                <source
+                    src="sounds/sazsyrnai.mp3"
+                    type="audio/mpeg">
+
+                Ваш браузер не поддерживает аудио.
+
             </audio>
+
         </div>
 
     </div>
 
-<section class="mood-section">
 
-    <h2> Подбор музыки по настроению</h2>
+    <!-- =====================================================
+         KUI BY MOOD
+    ====================================================== -->
 
-    <p>Выберите своё настроение и получите рекомендацию казахского кюя</p>
+    <section class="mood-section">
 
-    <select id="moodSelect">
-        <option value="">-- Выберите настроение --</option>
-        <option value="весёлое">Весёлое</option>
-        <option value="спокойное"> Спокойное</option>
-        <option value="грустное">Грустное</option>
-        <option value="энергичное">Энергичное</option>
-        <option value="вдохновение"> Вдохновение</option>
-    </select>
+        <h2 data-i18n="mood_title">
+            🎶 Подбор кюя по настроению
+        </h2>
 
-    <br><br>
+        <p data-i18n="mood_desc">
+            Выберите своё настроение и получите
+            рекомендацию казахского кюя.
+        </p>
 
-    <button class="recommend-btn" onclick="chooseMusic()">
-        Подобрать кюй
-    </button>
 
-    <div id="result">
-        Рекомендация
-    </div>
+        <select id="moodSelect">
 
-    <audio id="player" controls style="display:none; margin-top:15px;">
-        Ваш браузер не поддерживает аудио.
-    </audio>
+            <option
+                value=""
+                data-i18n="mood_opt_default">
 
-</section>
-    <footer>
+                -- Выберите настроение --
+
+            </option>
+
+
+            <option
+                value="весёлое"
+                data-i18n="mood_opt_happy">
+
+                😊 Весёлое
+
+            </option>
+
+
+            <option
+                value="спокойное"
+                data-i18n="mood_opt_calm">
+
+                😌 Спокойное
+
+            </option>
+
+
+            <option
+                value="грустное"
+                data-i18n="mood_opt_sad">
+
+                😔 Грустное
+
+            </option>
+
+
+            <option
+                value="энергичное"
+                data-i18n="mood_opt_energetic">
+
+                ⚡ Энергичное
+
+            </option>
+
+
+            <option
+                value="вдохновение"
+                data-i18n="mood_opt_inspired">
+
+                ✨ Вдохновение
+
+            </option>
+
+        </select>
+
+
+        <br>
+        <br>
+
+
+        <button
+            id="recommendButton"
+            class="recommend-btn"
+            data-i18n="btn_recommend">
+
+            Подобрать кюй
+
+        </button>
+
+
+        <div id="result">
+
+            <span data-i18n="result_default">
+                Рекомендация
+            </span>
+
+        </div>
+
+
+        <audio
+            id="player"
+            controls
+            style="display:none;">
+
+            Ваш браузер не поддерживает аудио.
+
+        </audio>
+
+    </section>
+
+
+    <!-- =====================================================
+         VOICE ASSISTANT
+         LAST SECTION
+    ====================================================== -->
+
+    <section class="voice-section">
+
+        <h2>
+            🎤 Голосовое управление
+        </h2>
+
+
+        <p>
+            Управляйте виртуальным музеем с помощью голоса.
+            Назовите музыкальный инструмент, чтобы включить его
+            звучание. Можно также попросить рассказать об инструменте.
+        </p>
+
+
+        <button
+            id="voiceButton"
+            class="voice-button">
+
+            🎤 Голосовое управление
+
+        </button>
+
+
+        <div id="voiceStatus">
+            Нажмите кнопку и говорите
+        </div>
+
+
+        <div id="voiceCommand">
+            Команда пока не распознана.
+        </div>
+
+
+        <div id="voiceLiveText">
+            🎧 Здесь будет отображаться распознанная речь.
+        </div>
+
+
+        <div class="voice-help">
+
+            <h3>
+                Примеры голосовых команд:
+            </h3>
+
+
+            <p>
+                🎵 «Домбра» — включить музыку домбры
+            </p>
+
+            <p>
+                🎵 «Кобыз» — включить музыку кобыза
+            </p>
+
+            <p>
+                🎵 «Жетыген» — включить музыку жетыгена
+            </p>
+
+            <p>
+                🎵 «Сыбызгы» — включить музыку сыбызгы
+            </p>
+
+            <p>
+                🎵 «Шанкобыз» — включить музыку шанкобыза
+            </p>
+
+            <p>
+                🎵 «Асатаяк» — включить музыку асатаяка
+            </p>
+
+            <p>
+                🎵 «Дауылпаз» — включить музыку дауылпаза
+            </p>
+
+            <p>
+                🎵 «Керней» — включить музыку кернея
+            </p>
+
+            <p>
+                🎵 «Сазсырнай» — включить музыку сазсырная
+            </p>
+
+
+            <p>
+                🔊 «Домбыра туралы» — рассказать о домбре
+            </p>
+
+            <p>
+                🔊 «Домбра туралы» — рассказать о домбре
+            </p>
+
+            <p>
+                🔊 «Домбыра жайлы» — рассказать о домбре
+            </p>
+
+            <p>
+                🔊 «Описание домбры» — рассказать о домбре
+            </p>
+
+            <p>
+                🔊 «Расскажи про кобыз» — рассказать о кобызе
+            </p>
+
+
+            <p>
+                ⛔ «Стоп» — остановить музыку или озвучку
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer data-i18n="footer">
+
         © 2026 Виртуальный музей казахских музыкальных инструментов
+
     </footer>
+
+
+    <!-- =====================================================
+         ONLY EXTERNAL JAVASCRIPT
+    ====================================================== -->
 
     <script src="script.js"></script>
 
